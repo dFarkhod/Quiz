@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualDars.Quiz.Backend", "VirtualDars.Quiz.Backend\VirtualDars.Quiz.Backend.csproj", "{9F4E6590-F4A5-4600-A8B6-A7AA6CCF7366}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F4E6590-F4A5-4600-A8B6-A7AA6CCF7366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F4E6590-F4A5-4600-A8B6-A7AA6CCF7366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F4E6590-F4A5-4600-A8B6-A7AA6CCF7366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F4E6590-F4A5-4600-A8B6-A7AA6CCF7366}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9C1A8FB-1270-49F4-903C-646E197A6D4E}
+	EndGlobalSection
+EndGlobal
