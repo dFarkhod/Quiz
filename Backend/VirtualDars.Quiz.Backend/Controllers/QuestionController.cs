@@ -16,5 +16,14 @@ namespace VirtualDars.Quiz.Backend.Controllers
         public void Post([FromBody] Question quesion)
         {
         }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Question>> Get()
+        {
+            return new Question[] {
+                new Question { Text = "Git'ning asoschisi kim"},
+                new Question { Text = "Yer Quyosh tizimidagi nechansi sayyora"}
+            };
+        }
     }
 }
