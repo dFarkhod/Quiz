@@ -1,8 +1,14 @@
 <mat-card>
     <mat-card-content>
         <form>
-            <mat-form-field>
+            <mat-form-field class="fullWidth">
                 <input [(ngModel)]="question.text" name="question" matInput placeholder="Savol">
+            </mat-form-field>
+            <mat-form-field class="fullWidth">
+                <input [(ngModel)]="question.correctAnswer" name="correctAsnwer" matInput placeholder="To'g'ri javob">
+            </mat-form-field>
+            <mat-form-field class="fullWidth" *ngFor="let wrongAsnwer of question.wrongAnswers; let i=index">
+                <input [(ngModel)]="wrongAsnwer" name="wrongAsnwer{{i+1}}" matInput placeholder="Noto'g'ri javob {{i+1}}">
             </mat-form-field>
         </form>
     </mat-card-content>
