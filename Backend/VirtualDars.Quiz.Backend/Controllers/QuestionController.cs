@@ -30,10 +30,7 @@ namespace VirtualDars.Quiz.Backend.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Question>> Get()
         {
-            return new Question[] {
-                new Question { Text = "Git'ning asoschisi kim"},
-                new Question { Text = "Yer Quyosh tizimidagi nechansi sayyora"}
-            };
+            return _context.Questions;
         }
     }
 }
