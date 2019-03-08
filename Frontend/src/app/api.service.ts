@@ -1,16 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ApiService {
 
+    private selectedQuestion = new Subject<any>();
     constructor(private http: HttpClient) {}
+
+    selectQuestion(question) {
+        this.selectedQuestion.next(question);
+    }
+
+    getSelectedQuestion() {
+        return this.selectedQuestion.asObservable();
+    }
 
     postQuestion(question) {
         this.http.post('https://localhost:44339/api/question', question)
             .subscribe(response => {
                 console.log(response);
             })
+    }
+
+    putQuestion(question) {
+        this.http.put('https://localhost:44339/api/question/' + question.id, question)
+        .subscribe(response => {
+            console.log(response);
+        })
     }
 
     getQuestions() {

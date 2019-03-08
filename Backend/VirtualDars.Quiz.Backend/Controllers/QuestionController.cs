@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VirtualDars.Quiz.Backend.Models;
 
 namespace VirtualDars.Quiz.Backend.Controllers
@@ -20,11 +21,25 @@ namespace VirtualDars.Quiz.Backend.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] Question question)
+        public async Task<IActionResult> Post([FromBody] Question question)
         {
-            question.WrongAnswersString = String.Join(',', question.WrongAnswers.ToArray());
+            if (question.WrongAnswers != null)
+                question.WrongAnswersString = String.Join(',', question.WrongAnswers.ToArray());
+
             _context.Questions.Add(question);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return Ok(question);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Question question)
+        {
+            if (id != question.Id)
+                return BadRequest();
+
+            _context.Entry(question).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return Ok(question);
         }
 
         [HttpGet]

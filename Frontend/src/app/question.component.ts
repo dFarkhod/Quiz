@@ -1,22 +1,34 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
+import { Subscription } from 'rxjs';
+import { Question } from './question';
 
 @Component ({
     templateUrl: './question.component.html',
     selector: 'question'
 })
 export class QuestionComponent {
-    question = {
-        text: 'Malayziya poytahti',
-        correctAnswer: 'Kuala Lumpur',
-        wrongAnswers: ['Bangkok', 'Melaka', 'Kanberra']
-    }
+    question = new Question();
+    private subscription: Subscription;
 
     constructor(private apiSvc: ApiService) {
 
     }
 
+    ngOnInit() {
+       this.subscription = this.apiSvc.getSelectedQuestion().subscribe( q => {
+            this.question = q;
+        })
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
     post() {
-       this.apiSvc.postQuestion(this.question);
+        if (!this.question.id)
+            this.apiSvc.postQuestion(this.question);
+        else
+            this.apiSvc.putQuestion(this.question);
     }
 }
