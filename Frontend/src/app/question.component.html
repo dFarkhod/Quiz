@@ -1,8 +1,4 @@
 <mat-card>
-    <mat-card-title>
-        <span *ngIf="question.id">Savolni o'zgartirish</span>
-        <span *ngIf="!question.id">Yangi savol</span>
-    </mat-card-title>
     <mat-card-content>
         <form>
             <mat-form-field class="fullWidth">
@@ -18,6 +14,5 @@
     </mat-card-content>
     <mat-card-actions>
         <button (click)="post()" mat-button>JO'NAT</button>
-        <button (click)="question={}" mat-button>YANGI SAVOL</button>
     </mat-card-actions>
 </mat-card>
