@@ -23,9 +23,6 @@ namespace VirtualDars.Quiz.Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Question question)
         {
-            if (question.WrongAnswers != null)
-                question.WrongAnswersString = String.Join(',', question.WrongAnswers.ToArray());
-
             _context.Questions.Add(question);
             await _context.SaveChangesAsync();
             return Ok(question);

@@ -4,3 +4,7 @@
 .fullWidth {
     width: 100%
 }
+
+.clickItem {
+    cursor: pointer;
+}

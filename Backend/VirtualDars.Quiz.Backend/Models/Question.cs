@@ -11,10 +11,8 @@ namespace VirtualDars.Quiz.Backend.Models
         public long Id { get; set; }
         public string Text { get; set; }
         public string CorrectAnswer { get; set; }
-
-        [NotMapped]
-        public List<string> WrongAnswers { get; set; }
-
-        public string WrongAnswersString { get; set; }
+        public string WrongAnswer1 { get; set; }
+        public string WrongAnswer2 { get; set; }
+        public string WrongAnswer3 { get; set; }
     }
 }
