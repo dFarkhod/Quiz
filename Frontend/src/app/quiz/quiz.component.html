@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>
+      <span *ngIf="quiz.id">O'zgartirish</span>
+      <span *ngIf="!quiz.id">Yangi</span>
+  </mat-card-title>
+  <mat-card-content>
+      <form>
+          <mat-form-field class="fullWidth">
+              <input [(ngModel)]="quiz.title" name="quiz" matInput placeholder="Sarlavha">
+          </mat-form-field>
+      </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button (click)="post()" mat-button>JO'NAT</button>
+      <button (click)="resetQuiz()" mat-button>YANGI</button>
+      <button (click)="navigateToQuestions()" mat-button>SAVOLLAR</button> 
+  </mat-card-actions>
+</mat-card>

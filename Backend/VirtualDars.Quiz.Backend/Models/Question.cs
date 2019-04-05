@@ -14,5 +14,6 @@ namespace VirtualDars.Quiz.Backend.Models
         public string WrongAnswer1 { get; set; }
         public string WrongAnswer2 { get; set; }
         public string WrongAnswer3 { get; set; }
+        public long QuizId { get; set; }
     }
 }

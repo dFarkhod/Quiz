@@ -15,5 +15,7 @@ namespace VirtualDars.Quiz.Backend
         }
 
         public DbSet<Question> Questions { get; set; }
+
+        public DbSet<VirtualDars.Quiz.Backend.Models.Quiz> Quiz { get; set; }
     }
 }
