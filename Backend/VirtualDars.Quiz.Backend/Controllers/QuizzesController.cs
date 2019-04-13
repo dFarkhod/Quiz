@@ -93,7 +93,7 @@ namespace VirtualDars.Quiz.Backend.Controllers
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQuiz", new { id = quiz.Id }, quiz);
+            return Ok(quiz); //CreatedAtAction("GetQuiz", new { id = quiz.Id }, quiz);
         }
 
         // DELETE: api/Quizzes/5

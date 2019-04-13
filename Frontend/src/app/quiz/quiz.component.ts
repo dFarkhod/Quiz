@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
   constructor(private apiSvc: ApiService, private router: Router) { }
 
 
-  resetQuestion() {
+  resetQuiz() {
     this.quiz = new Quiz();
   }
 
@@ -39,6 +39,8 @@ export class QuizComponent implements OnInit {
       this.apiSvc.putQuiz(this.quiz);
     else
       this.apiSvc.postQuiz(this.quiz);
+
+    this.resetQuiz();
   }
 
 }
