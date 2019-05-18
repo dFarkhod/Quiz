@@ -1,0 +1,11 @@
+<mat-card>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <mat-form-field>
+      <input type="email" placeholder="Email" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" placeholder="Kalit so'z" matInput formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Ro'yhatdan o'tish</button>
+  </form>
+</mat-card>
