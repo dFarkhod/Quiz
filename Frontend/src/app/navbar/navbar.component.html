@@ -1,5 +1,7 @@
 <mat-toolbar>
   <button mat-button routerLink="/">Asosiy</button>
   <span style="flex:auto"></span>
-  <button mat-button routerLink="/register">Ro'yhatdan o'tish</button>
+  <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/register">Ro'yhatdan o'tish</button>
+  <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/login">Kirish</button>
+  <button *ngIf="auth.isAuthenticated" mat-button (click)="logout()">Chiqish</button>
 </mat-toolbar>

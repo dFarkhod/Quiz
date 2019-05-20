@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionComponent } from './question.component';
 import { QuestionsComponent } from './questions/questions.component';
@@ -26,6 +27,7 @@ const routes = [
   { path: 'questions', component: QuestionsComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent }
 ];
 
@@ -38,7 +40,8 @@ const routes = [
     NavbarComponent,
     QuizComponent,
     QuizzesComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
