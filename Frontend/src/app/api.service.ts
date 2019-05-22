@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Question } from './question';
 import { Quiz } from './quiz';
@@ -11,7 +11,7 @@ export class ApiService {
     private selectedQuiz = new Subject<Quiz>();
     private newQuiz = new Subject<Quiz>();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     selectQuestion(question: Question) {
         this.selectedQuestion.next(question);
@@ -67,10 +67,14 @@ export class ApiService {
     }
 
     getQuestions(quizId) {
-       return this.http.get(`https://localhost:44339/api/question/${quizId}`);
+        return this.http.get(`https://localhost:44339/api/question/${quizId}`);
     }
 
     getQuizzes() {
         return this.http.get('https://localhost:44339/api/quizzes');
-     }
+    }
+
+    getAllQuizzes() {
+        return this.http.get('https://localhost:44339/api/quizzes/all');
+    }
 }

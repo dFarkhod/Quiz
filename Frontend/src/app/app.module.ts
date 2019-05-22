@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PlayComponent } from './play/play.component';
 import { QuestionComponent } from './question.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -28,6 +29,7 @@ const routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'play', component: PlayComponent },
   { path: '', component: HomeComponent }
 ];
 
@@ -41,7 +43,8 @@ const routes = [
     QuizComponent,
     QuizzesComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PlayComponent
   ],
   imports: [
     BrowserModule,

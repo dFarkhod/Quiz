@@ -31,6 +31,13 @@ namespace VirtualDars.Quiz.Backend.Controllers
             return _context.Quiz.Where(q => q.OwnerId == userId);
         }
 
+        [HttpGet("all")]
+        [AllowAnonymous]
+        public IEnumerable<Models.Quiz> GetAllQuizzes()
+        {
+            return _context.Quiz;
+        }
+
         // GET: api/Quizzes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] long id)
