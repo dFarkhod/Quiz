@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +31,15 @@ namespace VirtualDars.Quiz.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
-            services.AddDbContext<QuizContext>(options => options.UseInMemoryDatabase("Quiz"));
-            services.AddDbContext<UserDbContext>(options => options.UseInMemoryDatabase("User"));
+            services.AddCors(o => o.AddPolicy("AllowOrigin", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+            services.AddDbContext<QuizContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:QuizDB"]));
+            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:UserDB"]));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Constants.KEY_PHRASE));
@@ -61,6 +68,7 @@ namespace VirtualDars.Quiz.Backend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("AllowOrigin");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -69,6 +77,7 @@ namespace VirtualDars.Quiz.Backend
             {
                 app.UseHsts();
             }
+            
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseCors(builder => builder
